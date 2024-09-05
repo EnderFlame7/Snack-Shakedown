@@ -1,0 +1,139 @@
+[gd_scene load_steps=24 format=3 uid="uid://di47wu6bvti0h"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_6dn1p"]
+[ext_resource type="Texture2D" uid="uid://b8ooicsm3xmyl" path="res://Assets/Snacks/crackoons.png" id="2_nngxf"]
+[ext_resource type="Texture2D" uid="uid://c28ciik5gbx6p" path="res://Assets/Snacks/critter_crisps.png" id="3_wry6w"]
+[ext_resource type="Texture2D" uid="uid://ygs3apwvsc0f" path="res://Assets/Snacks/dumpster_dip.png" id="4_3t3yi"]
+[ext_resource type="Texture2D" uid="uid://bf6bsooyuq827" path="res://Assets/Snacks/tail_twists.png" id="5_2q5c4"]
+[ext_resource type="Texture2D" uid="uid://cjfry5gbusilu" path="res://Assets/Snacks/banana_peelz.png" id="6_ej70j"]
+[ext_resource type="Texture2D" uid="uid://b5wevrvv4eog8" path="res://Assets/Snacks/play_snack.png" id="7_f720e"]
+[ext_resource type="Texture2D" uid="uid://ds3gf160j7hki" path="res://Assets/Snacks/snack_blank.png" id="7_k7dmj"]
+[ext_resource type="Texture2D" uid="uid://c8rhx0y0a45d" path="res://Assets/Snacks/leaderboard_snack.png" id="8_ktoa5"]
+[ext_resource type="PackedScene" uid="uid://bu4l4h0gmrd3d" path="res://Scenes/vending_machine.tscn" id="8_tpi1s"]
+[ext_resource type="AudioStream" uid="uid://ci8l6qavtdsew" path="res://Assets/SFX/ambience.mp3" id="9_ijlo4"]
+[ext_resource type="Texture2D" uid="uid://dvixm5fflkp2t" path="res://Assets/Snacks/letter_snack.png" id="10_d7w37"]
+[ext_resource type="Texture2D" uid="uid://3dc86vscq7vf" path="res://Assets/Snacks/clear_snack.png" id="11_aslat"]
+[ext_resource type="AudioStream" uid="uid://dxpudaxrgrrxj" path="res://Assets/SFX/countdown.mp3" id="11_epred"]
+[ext_resource type="AudioStream" uid="uid://c6jx73akyr6vn" path="res://Assets/SFX/quota_met.mp3" id="12_84y13"]
+[ext_resource type="AudioStream" uid="uid://dbwgw0ufldhn1" path="res://Assets/SFX/warning.mp3" id="12_207s1"]
+[ext_resource type="Texture2D" uid="uid://cq5vwkttbnswb" path="res://Assets/Snacks/done_snack.png" id="12_s4iue"]
+[ext_resource type="PackedScene" uid="uid://bns05noevadfm" path="res://Scenes/leaderboard.tscn" id="13_nv650"]
+[ext_resource type="Texture2D" uid="uid://ddgubdx7hj4cx" path="res://Assets/bg.png" id="14_pb82k"]
+
+[sub_resource type="Animation" id="Animation_tmvav"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0k18a"]
+resource_name = "hide_leaderboard"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(753, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_utvjt"]
+resource_name = "show_leaderboard"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(753, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_srxis"]
+_data = {
+"RESET": SubResource("Animation_tmvav"),
+"hide_leaderboard": SubResource("Animation_0k18a"),
+"show_leaderboard": SubResource("Animation_utvjt")
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_6dn1p")
+snack_textures = Array[CompressedTexture2D]([ExtResource("2_nngxf"), ExtResource("3_wry6w"), ExtResource("4_3t3yi"), ExtResource("5_2q5c4"), ExtResource("6_ej70j")])
+menu_snack_textures = Array[CompressedTexture2D]([ExtResource("7_k7dmj"), ExtResource("7_f720e"), ExtResource("8_ktoa5")])
+name_snack_textures = Array[CompressedTexture2D]([ExtResource("10_d7w37"), ExtResource("11_aslat"), ExtResource("12_s4iue")])
+
+[node name="VendingMachine" parent="." instance=ExtResource("8_tpi1s")]
+unique_name_in_owner = true
+
+[node name="Camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+offset = Vector2(560, 680)
+
+[node name="ShakeTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.686275, 0.686275, 0.686275, 1)
+z_index = -500
+texture = ExtResource("14_pb82k")
+offset = Vector2(936.5, 680)
+metadata/_edit_lock_ = true
+
+[node name="BGForShake" type="Sprite2D" parent="BG"]
+modulate = Color(0.686275, 0.686275, 0.686275, 1)
+z_index = -500
+position = Vector2(-101, -68)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("14_pb82k")
+offset = Vector2(936.5, 680)
+metadata/_edit_lock_ = true
+
+[node name="Leaderboard" parent="." instance=ExtResource("13_nv650")]
+unique_name_in_owner = true
+offset_left = 1120.0
+offset_right = 1120.0
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="AmbienceSFX" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("9_ijlo4")
+
+[node name="CountdownSFX" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("11_epred")
+volume_db = -8.0
+
+[node name="WarningSFX" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("12_207s1")
+pitch_scale = 0.95
+
+[node name="QuotaMetSFX" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("12_84y13")
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_srxis")
+}

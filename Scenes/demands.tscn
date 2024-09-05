@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6q2uo2iiwmkt"]
+
+[ext_resource type="Texture2D" uid="uid://coxymd8skegfc" path="res://Assets/VendingMachine/demands.png" id="1_1b2lo"]
+[ext_resource type="Script" path="res://Scripts/demands.gd" id="1_hp75e"]
+[ext_resource type="Texture2D" uid="uid://b8ooicsm3xmyl" path="res://Assets/Snacks/crackoons.png" id="2_fwhuq"]
+[ext_resource type="FontFile" uid="uid://2m3fjjwnph7y" path="res://Assets/Fonts/Pencil/Pencil(sRB).TTF" id="3_70rst"]
+
+[node name="Demands" type="Control"]
+custom_minimum_size = Vector2(167, 317)
+layout_mode = 3
+anchor_right = 0.149
+anchor_bottom = 0.233
+offset_right = -166.88
+offset_bottom = -316.88
+script = ExtResource("1_hp75e")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1b2lo")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="SnackDemands" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.211356
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Demand1" type="HBoxContainer" parent="SnackDemands"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Amount" type="Label" parent="SnackDemands/Demand1"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_70rst")
+theme_override_font_sizes/font_size = 64
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Snack" type="TextureRect" parent="SnackDemands/Demand1"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = ExtResource("2_fwhuq")
+expand_mode = 1
+
+[node name="Demand2" type="HBoxContainer" parent="SnackDemands"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Amount" type="Label" parent="SnackDemands/Demand2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_70rst")
+theme_override_font_sizes/font_size = 64
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Snack" type="TextureRect" parent="SnackDemands/Demand2"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = ExtResource("2_fwhuq")
+expand_mode = 1
+
+[node name="Demand3" type="HBoxContainer" parent="SnackDemands"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Amount" type="Label" parent="SnackDemands/Demand3"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_70rst")
+theme_override_font_sizes/font_size = 64
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Snack" type="TextureRect" parent="SnackDemands/Demand3"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = ExtResource("2_fwhuq")
+expand_mode = 1

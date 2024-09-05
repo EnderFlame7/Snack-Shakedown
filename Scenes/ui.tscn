@@ -1,0 +1,293 @@
+[gd_scene load_steps=41 format=3 uid="uid://cttlf8swh4t42"]
+
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_dc4aj"]
+[ext_resource type="Texture2D" uid="uid://2ohtamwcjbjc" path="res://Assets/VendingMachine/digital_screen.png" id="2_1li1q"]
+[ext_resource type="AudioStream" uid="uid://3j3w3dwg4m44" path="res://Assets/SFX/button_beep.mp3" id="2_rojoh"]
+[ext_resource type="FontFile" uid="uid://bonsp03lnu2uq" path="res://Assets/Fonts/digital-7.ttf" id="3_qmxy3"]
+[ext_resource type="AudioStream" uid="uid://cnad8ahaxfics" path="res://Assets/SFX/error_beep.mp3" id="3_rlk5l"]
+[ext_resource type="Texture2D" uid="uid://bt7jeadk5jkoa" path="res://Assets/VendingMachine/Buttons/1_normal.png" id="4_gpr4k"]
+[ext_resource type="Texture2D" uid="uid://blddlm1qxs87u" path="res://Assets/VendingMachine/Buttons/1_pressed.png" id="5_1dsf1"]
+[ext_resource type="Texture2D" uid="uid://bf33wrfj5ievx" path="res://Assets/VendingMachine/Buttons/1_hover.png" id="6_dnu5v"]
+[ext_resource type="Texture2D" uid="uid://dg0r5k7oucwxy" path="res://Assets/VendingMachine/Buttons/2_normal.png" id="7_8ej1p"]
+[ext_resource type="Texture2D" uid="uid://ba1aqmfomhkff" path="res://Assets/VendingMachine/Buttons/2_pressed.png" id="8_ruugv"]
+[ext_resource type="Texture2D" uid="uid://legrd4isqatp" path="res://Assets/VendingMachine/Buttons/2_hover.png" id="9_hpv3c"]
+[ext_resource type="Texture2D" uid="uid://bsykt772gg34q" path="res://Assets/VendingMachine/Buttons/3_normal.png" id="10_dphh4"]
+[ext_resource type="Texture2D" uid="uid://d4i6t83lwcbvc" path="res://Assets/VendingMachine/Buttons/3_pressed.png" id="11_m1qkh"]
+[ext_resource type="Texture2D" uid="uid://dqk0llebj14lk" path="res://Assets/VendingMachine/Buttons/3_hover.png" id="12_gv4wf"]
+[ext_resource type="Texture2D" uid="uid://b3xg34kkqqv0b" path="res://Assets/VendingMachine/Buttons/4_normal.png" id="13_fmsth"]
+[ext_resource type="Texture2D" uid="uid://dtkbkewogqncm" path="res://Assets/VendingMachine/Buttons/4_pressed.png" id="14_jdogi"]
+[ext_resource type="Texture2D" uid="uid://boh1p755viwnj" path="res://Assets/VendingMachine/Buttons/4_hover.png" id="15_20l5e"]
+[ext_resource type="Texture2D" uid="uid://0yigmmlut37r" path="res://Assets/VendingMachine/Buttons/5_normal.png" id="16_rq20c"]
+[ext_resource type="Texture2D" uid="uid://8gqmopsl4jls" path="res://Assets/VendingMachine/Buttons/5_pressed.png" id="17_8su3k"]
+[ext_resource type="Texture2D" uid="uid://cr6rakq8yor6p" path="res://Assets/VendingMachine/Buttons/5_hover.png" id="18_eexd4"]
+[ext_resource type="Texture2D" uid="uid://dxbfqfqgtixsx" path="res://Assets/VendingMachine/Buttons/6_normal.png" id="19_tjsca"]
+[ext_resource type="Texture2D" uid="uid://d1psqyc5agfrf" path="res://Assets/VendingMachine/Buttons/6_pressed.png" id="20_s73fi"]
+[ext_resource type="Texture2D" uid="uid://cjhpufhtw8l" path="res://Assets/VendingMachine/Buttons/6_hover.png" id="21_htxbd"]
+[ext_resource type="Texture2D" uid="uid://boupbcqa82ymd" path="res://Assets/VendingMachine/Buttons/7_normal.png" id="22_xeycf"]
+[ext_resource type="Texture2D" uid="uid://bu6s5u2a8qa05" path="res://Assets/VendingMachine/Buttons/7_pressed.png" id="23_v2a5x"]
+[ext_resource type="Texture2D" uid="uid://cmndlq2x2urwc" path="res://Assets/VendingMachine/Buttons/7_hover.png" id="24_5rbgb"]
+[ext_resource type="Texture2D" uid="uid://cbqqqh6v5ydwv" path="res://Assets/VendingMachine/Buttons/8_normal.png" id="25_rxwkv"]
+[ext_resource type="Texture2D" uid="uid://juwl6ojt7nyw" path="res://Assets/VendingMachine/Buttons/8_pressed.png" id="26_axwwb"]
+[ext_resource type="Texture2D" uid="uid://bg4p6rilypfnq" path="res://Assets/VendingMachine/Buttons/8_hover.png" id="27_wcjcv"]
+[ext_resource type="Texture2D" uid="uid://2orusg783no1" path="res://Assets/VendingMachine/Buttons/9_normal.png" id="28_jhrvo"]
+[ext_resource type="Texture2D" uid="uid://cyqt2h5gosiy6" path="res://Assets/VendingMachine/Buttons/9_pressed.png" id="29_4xbx6"]
+[ext_resource type="Texture2D" uid="uid://dofh5yxa3gxvo" path="res://Assets/VendingMachine/Buttons/9_hover.png" id="30_mpd52"]
+[ext_resource type="Texture2D" uid="uid://tm82uhlnkh3n" path="res://Assets/VendingMachine/Buttons/0_normal.png" id="31_udmii"]
+[ext_resource type="Texture2D" uid="uid://d26bn63qq5be2" path="res://Assets/VendingMachine/Buttons/0_pressed.png" id="32_nvqxt"]
+[ext_resource type="Texture2D" uid="uid://f6on2kr6y3ax" path="res://Assets/VendingMachine/Buttons/0_hover.png" id="33_6h38p"]
+[ext_resource type="Texture2D" uid="uid://bwtuk1j6rlvg3" path="res://Assets/VendingMachine/Buttons/x_normal.png" id="34_w0h41"]
+[ext_resource type="Texture2D" uid="uid://b4cxf2ywrsugu" path="res://Assets/VendingMachine/Buttons/x_pressed.png" id="35_qcpvr"]
+[ext_resource type="Texture2D" uid="uid://bjvhc6wk0vhp7" path="res://Assets/VendingMachine/Buttons/x_hover.png" id="36_8qob4"]
+
+[sub_resource type="Gradient" id="Gradient_jhita"]
+offsets = PackedFloat32Array(0, 0.5, 0.75)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_myo17"]
+gradient = SubResource("Gradient_jhita")
+width = 300
+height = 400
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="UI" type="Control"]
+custom_minimum_size = Vector2(200, 800)
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_dc4aj")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Right" type="Polygon2D" parent="."]
+visible = false
+scale = Vector2(28, 21.9)
+color = Color(0.145098, 0.145098, 0.145098, 1)
+polygon = PackedVector2Array(0, 0, 7.14286, 0, 7.14286, 36.5297, 0, 36.5297)
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 13
+alignment = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Screen" type="Control" parent="VBoxContainer"]
+z_index = 1000
+clip_contents = true
+custom_minimum_size = Vector2(175, 300)
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.247
+anchor_right = 1.0
+anchor_bottom = 1.247
+offset_top = 74.1
+offset_right = 1.0
+offset_bottom = -75.1
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1li1q")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="ScreenLight" type="PointLight2D" parent="VBoxContainer/Screen"]
+position = Vector2(100, 150)
+color = Color(0.415289, 0.742781, 0.450047, 1)
+energy = 0.75
+texture = SubResource("GradientTexture2D_myo17")
+
+[node name="ScreenText" type="VBoxContainer" parent="VBoxContainer/Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+metadata/_edit_lock_ = true
+
+[node name="TopText" type="Label" parent="VBoxContainer/Screen/ScreenText"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qmxy3")
+theme_override_font_sizes/font_size = 48
+text = "WHAT WAS YOUR NAME?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MiddleText" type="Label" parent="VBoxContainer/Screen/ScreenText"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qmxy3")
+theme_override_font_sizes/font_size = 48
+text = "    00:00"
+autowrap_mode = 2
+
+[node name="BottomText" type="Label" parent="VBoxContainer/Screen/ScreenText"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qmxy3")
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Input" type="Label" parent="VBoxContainer/Screen"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+anchor_top = 0.83
+anchor_right = 1.0
+anchor_bottom = 0.997
+offset_top = -1.52588e-05
+offset_bottom = -0.100006
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qmxy3")
+theme_override_font_sizes/font_size = 48
+text = "XX"
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="NumPad" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="NumGrid" type="GridContainer" parent="VBoxContainer/NumPad"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="1" type="TextureButton" parent="VBoxContainer/NumPad/NumGrid" groups=["1"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("4_gpr4k")
+texture_pressed = ExtResource("5_1dsf1")
+texture_hover = ExtResource("6_dnu5v")
+
+[node name="2" type="TextureButton" parent="VBoxContainer/NumPad/NumGrid" groups=["2"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("7_8ej1p")
+texture_pressed = ExtResource("8_ruugv")
+texture_hover = ExtResource("9_hpv3c")
+
+[node name="3" type="TextureButton" parent="VBoxContainer/NumPad/NumGrid" groups=["3"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("10_dphh4")
+texture_pressed = ExtResource("11_m1qkh")
+texture_hover = ExtResource("12_gv4wf")
+
+[node name="4" type="TextureButton" parent="VBoxContainer/NumPad/NumGrid" groups=["4"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("13_fmsth")
+texture_pressed = ExtResource("14_jdogi")
+texture_hover = ExtResource("15_20l5e")
+
+[node name="5" type="TextureButton" parent="VBoxContainer/NumPad/NumGrid" groups=["5"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("16_rq20c")
+texture_pressed = ExtResource("17_8su3k")
+texture_hover = ExtResource("18_eexd4")
+
+[node name="6" type="TextureButton" parent="VBoxContainer/NumPad/NumGrid" groups=["6"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("19_tjsca")
+texture_pressed = ExtResource("20_s73fi")
+texture_hover = ExtResource("21_htxbd")
+
+[node name="7" type="TextureButton" parent="VBoxContainer/NumPad/NumGrid" groups=["7"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("22_xeycf")
+texture_pressed = ExtResource("23_v2a5x")
+texture_hover = ExtResource("24_5rbgb")
+
+[node name="8" type="TextureButton" parent="VBoxContainer/NumPad/NumGrid" groups=["8"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("25_rxwkv")
+texture_pressed = ExtResource("26_axwwb")
+texture_hover = ExtResource("27_wcjcv")
+
+[node name="9" type="TextureButton" parent="VBoxContainer/NumPad/NumGrid" groups=["9"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("28_jhrvo")
+texture_pressed = ExtResource("29_4xbx6")
+texture_hover = ExtResource("30_mpd52")
+
+[node name="0" type="TextureButton" parent="VBoxContainer/NumPad/NumGrid" groups=["0"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("31_udmii")
+texture_pressed = ExtResource("32_nvqxt")
+texture_hover = ExtResource("33_6h38p")
+
+[node name="Delete" type="TextureButton" parent="VBoxContainer/NumPad/NumGrid" groups=["X"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("34_w0h41")
+texture_pressed = ExtResource("35_qcpvr")
+texture_hover = ExtResource("36_8qob4")
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_rojoh")
+volume_db = -5.0
+
+[node name="InvalidSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_rlk5l")
+volume_db = -3.0
+pitch_scale = 0.9

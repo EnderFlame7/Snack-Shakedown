@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqbvro1vht4tt"]
+
+[ext_resource type="Script" path="res://Scripts/rat.gd" id="1_csdkg"]
+[ext_resource type="Texture2D" uid="uid://bpsestdqmfjor" path="res://icon.svg" id="1_laqr2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hs6w2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_laqr2")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3mpx"]
+size = Vector2(38, 38)
+
+[node name="Rat" type="Node2D"]
+script = ExtResource("1_csdkg")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(7.15256e-07, -3.57628e-07)
+scale = Vector2(0.296875, 0.296875)
+sprite_frames = SubResource("SpriteFrames_hs6w2")
+animation = &"Run"
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_m3mpx")

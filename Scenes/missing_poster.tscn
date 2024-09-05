@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3uncqficc5o2"]
+
+[ext_resource type="Texture2D" uid="uid://cygetbt3n8bqt" path="res://Assets/missing_poster.png" id="1_63nfg"]
+[ext_resource type="Script" path="res://Scripts/missing_poster.gd" id="1_o6fwn"]
+[ext_resource type="FontFile" uid="uid://bttt4arhcocvo" path="res://Assets/Fonts/New folder (10)/AvenirNextLTPro-Bold.otf" id="3_0ugdq"]
+
+[node name="MissingPoster" type="Control"]
+custom_minimum_size = Vector2(256, 320)
+layout_mode = 3
+anchor_right = 0.228571
+anchor_bottom = 0.235294
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 160)
+script = ExtResource("1_o6fwn")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_63nfg")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Position" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.28775
+anchor_right = 1.0
+anchor_bottom = 0.4405
+offset_top = -0.0800018
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_0ugdq")
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5595
+anchor_right = 1.0
+anchor_bottom = 0.7685
+offset_top = -0.0400085
+offset_bottom = 0.0799866
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.219608, 0.203922, 0.196078, 1)
+theme_override_fonts/font = ExtResource("3_0ugdq")
+theme_override_font_sizes/font_size = 48
+text = "XXXXX"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Reward" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0390625
+anchor_top = 0.774875
+anchor_right = 1.03906
+anchor_bottom = 0.984375
+offset_top = 0.039978
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.219608, 0.203922, 0.196078, 1)
+theme_override_fonts/font = ExtResource("3_0ugdq")
+theme_override_font_sizes/font_size = 48
+text = "$000,000"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

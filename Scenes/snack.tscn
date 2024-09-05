@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://seqa6jxaoym5"]
+
+[ext_resource type="Script" path="res://Scripts/snack.gd" id="1_4vod6"]
+[ext_resource type="Texture2D" uid="uid://b2c21bg0setwc" path="res://Assets/snack.png" id="1_i6pkx"]
+[ext_resource type="AudioStream" uid="uid://cyy5wgsgejjm6" path="res://Assets/SFX/chip_bag_drop.mp3" id="3_jpebh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5uy1"]
+size = Vector2(96, 96)
+
+[node name="Snack" type="RigidBody2D"]
+physics_interpolation_mode = 1
+z_index = 1
+mass = 0.001
+gravity_scale = 2.0
+script = ExtResource("1_4vod6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(48, 48)
+shape = SubResource("RectangleShape2D_y5uy1")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["snack_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(48, 48)
+shape = SubResource("RectangleShape2D_y5uy1")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(48, 48)
+texture = ExtResource("1_i6pkx")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 96.0
+offset_bottom = 96.0
+metadata/_edit_lock_ = true
+
+[node name="Letter" type="Label" parent="Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.505882, 0.968627, 0.733333, 1)
+theme_override_colors/font_outline_color = Color(0.0862745, 0.172549, 0.121569, 1)
+theme_override_constants/outline_size = 21
+theme_override_font_sizes/font_size = 70
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="DropSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_jpebh")
+volume_db = -3.0
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_entered"]

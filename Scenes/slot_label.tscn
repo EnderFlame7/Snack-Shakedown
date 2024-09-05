@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5e75g8xca4b5"]
+
+[ext_resource type="Script" path="res://Scripts/slot_label.gd" id="1_jy5cu"]
+[ext_resource type="FontFile" uid="uid://dnw67l1cwe1eb" path="res://Assets/Fonts/OBGB.TTF" id="2_ijyl3"]
+
+[node name="SlotLabel" type="Control"]
+custom_minimum_size = Vector2(116, 116)
+layout_mode = 3
+anchor_right = 0.145
+anchor_bottom = 0.112
+offset_bottom = -0.480003
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_jy5cu")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.827379
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0239944
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Gray" type="Polygon2D" parent="Panel"]
+position = Vector2(0, -83.3407)
+scale = Vector2(1.39316, 0.9375)
+color = Color(0.28485, 0.28485, 0.28485, 1)
+polygon = PackedVector2Array(0, 85, 117, 85, 117, 117, 0, 117)
+
+[node name="Black" type="Polygon2D" parent="Panel"]
+position = Vector2(-24, -83.3554)
+scale = Vector2(0.358974, 0.9375)
+color = Color(0, 0, 0, 1)
+offset = Vector2(167.143, 0.0156631)
+polygon = PackedVector2Array(0, 85, 117, 85, 117, 117, 0, 117)
+
+[node name="Label" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.114187
+anchor_right = 0.998
+anchor_bottom = 1.03119
+offset_top = -0.00980437
+offset_right = -0.0751953
+offset_bottom = -0.0034771
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ijyl3")
+theme_override_font_sizes/font_size = 24
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

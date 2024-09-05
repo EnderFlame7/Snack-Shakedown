@@ -1,0 +1,568 @@
+[gd_scene load_steps=35 format=3 uid="uid://bu4l4h0gmrd3d"]
+
+[ext_resource type="PackedScene" uid="uid://cpgv5gnego0t6" path="res://Scenes/machine_layout.tscn" id="1_4a73l"]
+[ext_resource type="Script" path="res://Scripts/vending_machine.gd" id="1_b16i3"]
+[ext_resource type="Texture2D" uid="uid://cf3br3voku5r5" path="res://Assets/VendingMachine/flap_inside.png" id="2_5wt04"]
+[ext_resource type="PackedScene" uid="uid://cttlf8swh4t42" path="res://Scenes/ui.tscn" id="2_lkm3g"]
+[ext_resource type="PackedScene" uid="uid://cshbk6ompebk2" path="res://Scenes/snack_grid.tscn" id="3_g722q"]
+[ext_resource type="Texture2D" uid="uid://bnjhm4o0snaci" path="res://Assets/Raccoon/gun_1.png" id="3_u1kbw"]
+[ext_resource type="Texture2D" uid="uid://d41gx74lkp6x" path="res://Assets/lamp_post_light.png" id="4_024am"]
+[ext_resource type="Texture2D" uid="uid://cmpey31dg0e6w" path="res://Assets/Raccoon/gun_2.png" id="4_df8hy"]
+[ext_resource type="Texture2D" uid="uid://bb8fni2xnm2r7" path="res://Assets/Raccoon/gun_3.png" id="5_f0nyt"]
+[ext_resource type="Texture2D" uid="uid://drrs6w0d7rn1v" path="res://Assets/Raccoon/gun_4.png" id="6_v64cv"]
+[ext_resource type="Texture2D" uid="uid://ohwlltggt276" path="res://Assets/Raccoon/gun_5.png" id="7_peofp"]
+[ext_resource type="Texture2D" uid="uid://dfswupggph0cs" path="res://Assets/Raccoon/gun_6.png" id="8_g66xr"]
+[ext_resource type="Texture2D" uid="uid://dotjcvx28kcxr" path="res://Assets/Raccoon/gun_7.png" id="9_m1gts"]
+[ext_resource type="Texture2D" uid="uid://p5eeprefncn" path="res://Assets/Raccoon/gun_8.png" id="10_w37qg"]
+[ext_resource type="Texture2D" uid="uid://3wc8ruhvckg4" path="res://Assets/Raccoon/gun_9.png" id="11_itwe4"]
+[ext_resource type="AudioStream" uid="uid://dkj5rkvgtl4h5" path="res://Assets/SFX/flap_open.mp3" id="16_p6enc"]
+[ext_resource type="AudioStream" uid="uid://dwc33o80xp0dh" path="res://Assets/SFX/flap_close.mp3" id="17_aljvq"]
+[ext_resource type="AudioStream" uid="uid://congy23iuj6ac" path="res://Assets/SFX/gun_cock.mp3" id="18_yyl73"]
+[ext_resource type="AudioStream" uid="uid://b2igetlav4hd7" path="res://Assets/SFX/gun_holster.mp3" id="19_c4os2"]
+[ext_resource type="AudioStream" uid="uid://x6kqi13u5pg6" path="res://Assets/SFX/gun_shot.mp3" id="19_qmuwg"]
+[ext_resource type="AudioStream" uid="uid://bt85nybcbrsjf" path="res://Assets/SFX/light_flicker.mp3" id="21_71mva"]
+[ext_resource type="Texture2D" uid="uid://ci7bjygnmivob" path="res://Assets/VendingMachine/shadow.png" id="22_lto2p"]
+[ext_resource type="Texture2D" uid="uid://c3j8b3vxdt0b8" path="res://Assets/VendingMachine/blood.png" id="22_u4g7q"]
+[ext_resource type="PackedScene" uid="uid://c6q2uo2iiwmkt" path="res://Scenes/demands.tscn" id="24_rlbgf"]
+[ext_resource type="Texture2D" uid="uid://daxrm5knsu7jt" path="res://Assets/VendingMachine/stock_order.png" id="25_q1jhv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0a7g0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u1kbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_df8hy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f0nyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v64cv")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u1kbw")
+}],
+"loop": false,
+"name": &"reset",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_peofp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_g66xr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_m1gts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_w37qg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_itwe4")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 12.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_ssapy"]
+offsets = PackedFloat32Array(0, 0.392857, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jce0s"]
+gradient = SubResource("Gradient_ssapy")
+width = 1450
+height = 2200
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_glepc"]
+resource_name = "menu"
+length = 1.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.75, 1.08),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"toggle_lamp"
+}, {
+"args": [true],
+"method": &"toggle_lamp"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFX/FlickerSFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LampPostLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.039602, 0.0739056, 0.126844, 0.184549, 0.24, 0.35, 0.367421, 0.391711, 0.409132, 0.414967, 0.432388, 0.452985, 0.470406, 0.498051, 0.515472, 0.538084, 0.555505, 0.557004, 0.574425, 0.588648, 0.606069, 0.632037, 0.649458, 0.654955, 0.672376, 0.706732, 0.724153, 0.733344, 0.750765, 1.08, 1.11568, 1.1359, 1.15529, 1.18959, 1.21635, 1.24253, 1.275, 1.5),
+"transitions": PackedFloat32Array(0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 1.5, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 2.5, 1),
+"update": 0,
+"values": [0.5, 0.1, 0.25, 0.1, 0.35, 0.25, 0.5, 0.5, 0.75, 0.75, 0.65, 0.65, 0.5, 0.5, 0.75, 0.75, 0.65, 0.65, 0.5, 0.5, 0.75, 0.75, 0.65, 0.65, 0.5, 0.5, 0.75, 0.75, 0.65, 0.65, 0.5, 0.35, 0.25, 0.1, 0.25, 0.35, 0.1, 0.75, 0.5]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SnackGrid")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_setup_menu"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"disable_buttons"
+}, {
+"args": [false],
+"method": &"disable_buttons"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Demands:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.08),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_s3re1"]
+resource_name = "name_submit"
+length = 1.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.75, 1.08),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"toggle_lamp"
+}, {
+"args": [true],
+"method": &"toggle_lamp"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFX/FlickerSFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LampPostLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.039602, 0.0739056, 0.126844, 0.184549, 0.24, 0.35, 0.367421, 0.391711, 0.409132, 0.414967, 0.432388, 0.452985, 0.470406, 0.498051, 0.515472, 0.538084, 0.555505, 0.557004, 0.574425, 0.588648, 0.606069, 0.632037, 0.649458, 0.654955, 0.672376, 0.706732, 0.724153, 0.733344, 0.750765, 1.08, 1.11568, 1.1359, 1.15529, 1.18959, 1.21635, 1.24253, 1.275, 1.5),
+"transitions": PackedFloat32Array(0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 1.5, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 2.5, 1),
+"update": 0,
+"values": [0.5, 0.1, 0.25, 0.1, 0.35, 0.25, 0.5, 0.5, 0.75, 0.75, 0.65, 0.65, 0.5, 0.5, 0.75, 0.75, 0.65, 0.65, 0.5, 0.5, 0.75, 0.75, 0.65, 0.65, 0.5, 0.5, 0.75, 0.75, 0.65, 0.65, 0.5, 0.35, 0.25, 0.1, 0.25, 0.35, 0.1, 0.75, 0.5]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SnackGrid")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_setup_name_submit"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"disable_buttons"
+}, {
+"args": [false],
+"method": &"disable_buttons"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Demands:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.08),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_11xbb"]
+resource_name = "randomize"
+length = 1.5
+step = 1.08
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.75, 1.08),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"toggle_lamp"
+}, {
+"args": [true],
+"method": &"toggle_lamp"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFX/FlickerSFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LampPostLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.039602, 0.0739056, 0.126844, 0.184549, 0.24, 0.35, 0.367421, 0.391711, 0.409132, 0.414967, 0.432388, 0.452985, 0.470406, 0.498051, 0.515472, 0.538084, 0.555505, 0.557004, 0.574425, 0.588648, 0.606069, 0.632037, 0.649458, 0.654955, 0.672376, 0.706732, 0.724153, 0.733344, 0.750765, 1.08, 1.11568, 1.1359, 1.15529, 1.18959, 1.21635, 1.24253, 1.275, 1.5),
+"transitions": PackedFloat32Array(0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 1.5, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 2.5, 1),
+"update": 0,
+"values": [0.5, 0.1, 0.25, 0.1, 0.35, 0.25, 0.5, 0.5, 0.75, 0.75, 0.65, 0.65, 0.5, 0.5, 0.75, 0.75, 0.65, 0.65, 0.5, 0.5, 0.75, 0.75, 0.65, 0.65, 0.5, 0.5, 0.75, 0.75, 0.65, 0.65, 0.5, 0.35, 0.25, 0.1, 0.25, 0.35, 0.1, 0.75, 0.5]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SnackGrid")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_randomize"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"disable_buttons"
+}, {
+"args": [false],
+"method": &"disable_buttons"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Demands:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.08),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Demands")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.08),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"update_demands"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dl75i"]
+resource_name = "reset"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"toggle_lamp"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LampPostLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.35]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Demands:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_o21bw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Demands:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o61p8"]
+_data = {
+"RESET": SubResource("Animation_o21bw"),
+"menu": SubResource("Animation_glepc"),
+"name_submit": SubResource("Animation_s3re1"),
+"randomize": SubResource("Animation_11xbb"),
+"reset": SubResource("Animation_dl75i")
+}
+
+[node name="VendingMachine" type="Node2D"]
+modulate = Color(0.784314, 0.784314, 0.784314, 1)
+position = Vector2(168, 247)
+script = ExtResource("1_b16i3")
+
+[node name="MachineLayout" parent="." instance=ExtResource("1_4a73l")]
+
+[node name="FlapInside" type="Sprite2D" parent="."]
+position = Vector2(313, 897)
+scale = Vector2(0.947917, 0.9375)
+texture = ExtResource("2_5wt04")
+
+[node name="Flap" type="AnimatedSprite2D" parent="FlapInside"]
+unique_name_in_owner = true
+position = Vector2(-1.05496, 0.533264)
+scale = Vector2(0.421978, 0.426667)
+sprite_frames = SubResource("SpriteFrames_0a7g0")
+animation = &"shoot"
+frame = 4
+frame_progress = 1.0
+
+[node name="Darkness" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 100
+color = Color(0, 0, 0, 0.882353)
+polygon = PackedVector2Array(-168, -247, 952, -247, 952, 1113, -168, 1113)
+metadata/_edit_lock_ = true
+
+[node name="LampPostLight" type="PointLight2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(392, -247)
+color = Color(1, 0.454902, 0, 1)
+energy = 0.26809
+shadow_enabled = true
+texture = ExtResource("4_024am")
+offset = Vector2(0, 680)
+metadata/_edit_lock_ = true
+
+[node name="SnackGrid" parent="." instance=ExtResource("3_g722q")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 600.0
+offset_bottom = 800.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="UI" parent="." instance=ExtResource("2_lkm3g")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 600.0
+offset_right = 800.0
+offset_bottom = 800.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="FlapOpenSFX" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("16_p6enc")
+
+[node name="FlapCloseSFX" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("17_aljvq")
+
+[node name="GunCockSFX" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("18_yyl73")
+
+[node name="GunHolsterSFX" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("19_c4os2")
+
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("19_qmuwg")
+volume_db = -5.0
+
+[node name="FlickerSFX" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("21_71mva")
+
+[node name="MuzzleFlash" type="PointLight2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(242, 842)
+color = Color(1, 1, 0.313726, 1)
+energy = 5.0
+texture = SubResource("GradientTexture2D_jce0s")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(390, 681)
+texture = ExtResource("22_lto2p")
+
+[node name="Blood" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1000
+position = Vector2(353, 272)
+rotation = 0.294292
+texture = ExtResource("22_u4g7q")
+metadata/_edit_lock_ = true
+
+[node name="Demands" parent="." instance=ExtResource("24_rlbgf")]
+unique_name_in_owner = true
+visible = false
+offset_left = 622.0
+offset_top = 664.0
+offset_right = 789.0
+offset_bottom = 981.0
+rotation = 0.0537038
+
+[node name="StockOrder" type="Sprite2D" parent="Demands"]
+position = Vector2(44.1668, -594.227)
+rotation = -0.0537038
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("25_q1jhv")
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_o61p8")
+}

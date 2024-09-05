@@ -1,0 +1,119 @@
+[gd_scene load_steps=4 format=3 uid="uid://bns05noevadfm"]
+
+[ext_resource type="Script" path="res://Scripts/leaderboard.gd" id="1_uusgy"]
+[ext_resource type="PackedScene" uid="uid://c3uncqficc5o2" path="res://Scenes/missing_poster.tscn" id="3_4kkmg"]
+[ext_resource type="Texture2D" uid="uid://bfwb4vxxbt1as" path="res://Assets/lamp_post_light_thin.png" id="3_5winb"]
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uusgy")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 200
+columns = 3
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Posters" type="Node2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.9, 0.9)
+metadata/_edit_lock_ = true
+
+[node name="1" parent="Posters" instance=ExtResource("3_4kkmg")]
+offset_left = 291.834
+offset_top = 438.199
+offset_right = 547.834
+offset_bottom = 758.199
+rotation = -0.117021
+
+[node name="2" parent="Posters" instance=ExtResource("3_4kkmg")]
+offset_left = 0.833997
+offset_top = 313.199
+offset_right = 256.834
+offset_bottom = 633.199
+rotation = 0.0820305
+scale = Vector2(0.9, 0.9)
+
+[node name="3" parent="Posters" instance=ExtResource("3_4kkmg")]
+offset_left = 255.834
+offset_top = 116.199
+offset_right = 511.834
+offset_bottom = 436.199
+rotation = 0.0331613
+scale = Vector2(0.85, 0.85)
+
+[node name="4" parent="Posters" instance=ExtResource("3_4kkmg")]
+offset_left = 513.834
+offset_top = 225.199
+offset_right = 769.834
+offset_bottom = 545.199
+rotation = -0.205949
+scale = Vector2(0.8, 0.8)
+
+[node name="5" parent="Posters" instance=ExtResource("3_4kkmg")]
+offset_left = 50.8339
+offset_top = 612.199
+offset_right = 306.834
+offset_bottom = 932.199
+rotation = -0.122166
+scale = Vector2(0.75, 0.75)
+
+[node name="6" parent="Posters" instance=ExtResource("3_4kkmg")]
+offset_left = 553.834
+offset_top = 495.199
+offset_right = 809.834
+offset_bottom = 815.199
+rotation = 0.0331613
+scale = Vector2(0.7, 0.7)
+
+[node name="7" parent="Posters" instance=ExtResource("3_4kkmg")]
+offset_left = 266.834
+offset_top = 733.199
+offset_right = 522.834
+offset_bottom = 1053.2
+rotation = -0.0174533
+scale = Vector2(0.65, 0.65)
+
+[node name="8" parent="Posters" instance=ExtResource("3_4kkmg")]
+offset_left = 454.834
+offset_top = 714.199
+offset_right = 710.834
+offset_bottom = 1034.2
+rotation = 0.0961071
+scale = Vector2(0.6, 0.6)
+
+[node name="9" parent="Posters" instance=ExtResource("3_4kkmg")]
+offset_left = 84.8339
+offset_top = 848.199
+offset_right = 340.834
+offset_bottom = 1168.2
+rotation = 0.14928
+scale = Vector2(0.55, 0.55)
+
+[node name="10" parent="Posters" instance=ExtResource("3_4kkmg")]
+offset_left = 613.834
+offset_top = 862.199
+offset_right = 869.834
+offset_bottom = 1182.2
+rotation = -0.0818739
+scale = Vector2(0.5, 0.5)
+
+[node name="LampPostLight" type="PointLight2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(354, 0)
+color = Color(1, 0.454902, 0, 1)
+energy = 0.25
+shadow_enabled = true
+texture = ExtResource("3_5winb")
+offset = Vector2(0, 680)
