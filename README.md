@@ -7,4 +7,5 @@ money and time, the challenge escalates as harder patterns are required in short
 periods.
 
 The game featured 5 unique snacks and implemented a fully functional online leaderboard,
-showcasing sound design, special effects, and immersion skills. Ratings are pending.
+showcasing sound design, special effects, and immersion skills. The game ranked 4th out
+of 65 entries and 1st in design.
